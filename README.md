@@ -9,10 +9,12 @@ To run this program, you will need to have Python 3 installed. You can follow [t
 ##### Running the program
 Clone this repo and open it in your editor.
 From your terminal, make sure you are in the directory of this repo.
+cd into the server directory
+&nbsp;&nbsp;&nbsp;&nbsp;`cd server`
 Install the requirements
 &nbsp;&nbsp;&nbsp;&nbsp;`pip install -r requirements.txt`
 Run the app
-&nbsp;&nbsp;&nbsp;&nbsp;`python server/server.py`
+&nbsp;&nbsp;&nbsp;&nbsp;`python server.py`
 Navigate to https://localhost:8080
 
 ##### App Usage
