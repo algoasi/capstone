@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Diabetes Prediction ML</title>
+        <meta name="description" content="A site hosting a diabetes prediction machine learning model">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <h1 id="prediction"></h1>
+            </div>
+            <form id="diabetesForm" method="POST" action="">
+                <h2>Diabetes Risk Prediction</h2>
+                <label for="pregnancies">Pregnancies</label>
+                <input type="number" name="pregnancies" id="pregnancies">
+                <label for="glucose">Glucose</label>
+                <input type="number" name="glucose" id="glucose">
+                <label for="blood_pressure">Blood Pressure</label>
+                <input type="number" name="blood_pressure" id="blood_pressure">
+                <label for="skin_thickness">Skin Thickness</label>
+                <input type="number" name="skin_thickness" id="skin_thickness">
+                <label for="insulin">Insulin</label>
+                <input type="number" name="insulin" id="insulin">
+                <label for="bmi">Bmi</label>
+                <input type="number" step="0.1" name="bmi" id="bmi">
+                <label for="diabetes_fn">Diabetes Pedigree Function</label>
+                <input type="number" step="0.001" name="diabetes_fn" id="diabetes_fn">
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <script>
+            const form = document.getElementById("diabetesForm");
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+                let data = {}
+                const input = new FormData(this);
+                for (const [name,value] of input) {
+                    data[name] = value;
+                }
+                console.log(data)
+                console.log(JSON.stringify(data))
+                fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const msgHeading = document.getElementById("prediction")
+                    if(data.data === 1){
+                        msgHeading.innerText = "This patient is at risk for diabetes!"
+                    } else {
+                        msgHeading.innerText = "This patient is not at risk for diabetes!"
+                    }
+                })
+                .catch((error) => {
+                    msgHeading.innerText = "There was an error -- Please try again."
+                });
+            })
+        </script>
+    </body>
+</html>
