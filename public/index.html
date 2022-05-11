@@ -17,21 +17,21 @@
             <form id="diabetesForm" method="POST" action="">
                 <h2>Diabetes Risk Prediction</h2>
                 <label for="pregnancies">Pregnancies</label>
-                <input type="number" name="pregnancies" id="pregnancies">
+                <input required type="number" name="pregnancies" id="pregnancies">
                 <label for="glucose">Glucose</label>
-                <input type="number" name="glucose" id="glucose">
+                <input required type="number" name="glucose" id="glucose">
                 <label for="blood_pressure">Blood Pressure</label>
-                <input type="number" name="blood_pressure" id="blood_pressure">
+                <input required type="number" name="blood_pressure" id="blood_pressure">
                 <label for="skin_thickness">Skin Thickness</label>
-                <input type="number" name="skin_thickness" id="skin_thickness">
+                <input required type="number" name="skin_thickness" id="skin_thickness">
                 <label for="insulin">Insulin</label>
-                <input type="number" name="insulin" id="insulin">
+                <input required type="number" name="insulin" id="insulin">
                 <label for="bmi">Bmi</label>
-                <input type="number" step="0.1" name="bmi" id="bmi">
+                <input required type="number" step="0.1" name="bmi" id="bmi">
                 <label for="diabetes_fn">Diabetes Pedigree Function</label>
-                <input type="number" step="0.001" name="diabetes_fn" id="diabetes_fn">
+                <input required type="number" step="0.001" name="diabetes_fn" id="diabetes_fn">
                 <label for="age">Age</label>
-                <input type="number" name="age" id="age">
+                <input required type="number" name="age" id="age">
                 <button type="submit">Submit</button>
             </form>
         </div>
