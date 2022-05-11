@@ -57,13 +57,18 @@
                 .then(data => {
                     const msgHeading = document.getElementById("prediction")
                     if(data.data === 1){
+                        msgHeading.style.color = "red";
                         msgHeading.innerText = "This patient is at risk for diabetes!"
                     } else {
+                        msgHeading.style.color = "green";
                         msgHeading.innerText = "This patient is not at risk for diabetes!"
                     }
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 })
                 .catch((error) => {
+                    msgHeading.style.color = "orange";
                     msgHeading.innerText = "There was an error -- Please try again."
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             })
         </script>
