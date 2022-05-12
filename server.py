@@ -8,7 +8,7 @@ model_pkl.close()
 
 @route('/<filepath:path>')
 def server_static(filepath):
-    return static_file(filepath, root='../public')
+    return static_file(filepath, root='./public')
 
 @route("/")
 def hello():
@@ -30,4 +30,9 @@ def do_predict():
     prediction = model.predict(data)
     return dict(data=prediction.tolist()[0])
 
-run(host='localhost', port=8080, debug=True)
+isProd = os.environ.get("ENV")
+host = "localhost"
+if isProd:
+    host = "0.0.0.0"
+port = int(os.environ.get("PORT", 8080))
+run(host=host, port=port)
