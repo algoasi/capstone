@@ -30,6 +30,9 @@ def do_predict():
     prediction = model.predict(data)
     return dict(data=prediction.tolist()[0])
 
-host = os.environ.get("ENV", "localhost")
+isProd = os.environ.get("ENV")
+host = "localhost"
+if isProd:
+    host = "0.0.0.0"
 port = int(os.environ.get("PORT", 8080))
 run(host=host, port=port)
