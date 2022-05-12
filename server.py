@@ -30,4 +30,7 @@ def do_predict():
     prediction = model.predict(data)
     return dict(data=prediction.tolist()[0])
 
-run(host='localhost', port=8080, debug=True)
+if os.environ.get('APP_LOCATION') == None:
+    run(host='localhost', port=8080, debug=True)
+else:
+    run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
