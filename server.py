@@ -8,7 +8,7 @@ model_pkl.close()
 
 @route('/<filepath:path>')
 def server_static(filepath):
-    return static_file(filepath, root='../public')
+    return static_file(filepath, root='./public')
 
 @route("/")
 def hello():
